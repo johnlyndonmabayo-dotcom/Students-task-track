@@ -1,16 +1,13 @@
 {
   "name": "tasktrack",
   "version": "1.0.0",
-  "private": true,
-  "description": "A simple student task manager built with Express and SQLite",
+  "description": "Student Task Tracking System",
   "main": "server.js",
-  "type": "commonjs",
   "scripts": {
     "start": "node server.js"
   },
-"engines": {
-  "node": "22.14.0"
-}
+  "engines": {
+    "node": "22.14.0"
   },
   "dependencies": {
     "better-sqlite3": "^11.10.0",
