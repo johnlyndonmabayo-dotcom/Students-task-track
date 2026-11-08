@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6c4ce5">
+  <title>TaskTrack | Student Task Manager</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/" aria-label="TaskTrack home">
+        <span class="brand-mark">T</span>
+        <span>TaskTrack</span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <a class="nav-item active" href="#dashboard"><span>▦</span> Dashboard</a>
+      <a class="nav-item" href="#tasks"><span>☷</span> My Tasks</a>
+      <div class="sidebar-note">
+        <div class="note-icon">✦</div>
+        <strong>Stay on track!</strong>
+        <p>Small steps every day lead to big results.</p>
+      </div>
+      <div class="sidebar-footer">STUDENT TASK MANAGER</div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">YOUR PERSONAL WORKSPACE</p>
+          <h1>My Dashboard</h1>
+        </div>
+        <button class="primary-button" id="addTaskTop" type="button"><span>＋</span> Add New Task</button>
+      </header>
+
+      <section class="welcome-card">
+        <div>
+          <p class="welcome-kicker">WELCOME BACK!</p>
+          <h2>Make today productive.</h2>
+          <p>Organize your schoolwork and keep track of what matters.</p>
+        </div>
+        <div class="welcome-art" aria-hidden="true">✦</div>
+      </section>
+
+      <section class="stats-grid" aria-label="Task summary">
+        <article class="stat-card">
+          <div class="stat-icon purple">▤</div>
+          <div><p>Total Tasks</p><strong id="totalCount">0</strong></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon orange">◷</div>
+          <div><p>Pending</p><strong id="pendingCount">0</strong></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon blue">↻</div>
+          <div><p>In Progress</p><strong id="progressCount">0</strong></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon green">✓</div>
+          <div><p>Completed</p><strong id="completedCount">0</strong></div>
+        </article>
+      </section>
+
+      <section class="tasks-section" id="tasks">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">KEEP EVERYTHING ORGANIZED</p>
+            <h2>Your Tasks</h2>
+          </div>
+          <button class="primary-button mobile-add" id="addTaskMobile" type="button">＋ Add Task</button>
+        </div>
+
+        <div class="toolbar">
+          <label class="search-box">
+            <span>⌕</span>
+            <input id="searchInput" type="search" placeholder="Search tasks..." aria-label="Search tasks">
+          </label>
+          <select id="statusFilter" aria-label="Filter tasks by status">
+            <option value="All">All Status</option>
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </div>
+
+        <div id="message" class="message" role="status" aria-live="polite"></div>
+        <div id="taskList" class="task-list">
+          <div class="empty-state"><div class="empty-icon">☷</div><h3>Loading your tasks...</h3></div>
+        </div>
+      </section>
+      <footer class="page-footer">Made for better days and more organized schoolwork.</footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="taskModal" aria-hidden="true">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <div><p class="eyebrow">TASK DETAILS</p><h2 id="modalTitle">Add New Task</h2></div>
+        <button class="icon-button" id="closeModal" type="button" aria-label="Close">×</button>
+      </div>
+      <form id="taskForm">
+        <input type="hidden" id="taskId">
+        <label for="titleInput">Task Title <span>*</span></label>
+        <input id="titleInput" maxlength="120" required placeholder="e.g. Finish programming activity">
+        <label for="descriptionInput">Description</label>
+        <textarea id="descriptionInput" rows="3" maxlength="1000" placeholder="Add some details..."></textarea>
+        <label for="deadlineInput">Deadline</label>
+        <input id="deadlineInput" type="date">
+        <label for="taskStatus">Status</label>
+        <select id="taskStatus">
+          <option>Pending</option>
+          <option>In Progress</option>
+          <option>Completed</option>
+        </select>
+        <div class="modal-actions">
+          <button class="secondary-button" id="cancelModal" type="button">Cancel</button>
+          <button class="primary-button" id="saveTaskButton" type="submit">Save Task</button>
+        </div>
+      </form>
+    </section>
+  </div>
+</body>
+</html>
